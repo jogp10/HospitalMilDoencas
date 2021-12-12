@@ -73,7 +73,7 @@ Patologia = ["Ortodontia", "Branqueamento",
                "Tosse", "Covid-19",
                "Anca", "Joelho",
                 "Femur", "Costela",
-                "Infeção Urinária", "Circuncisao"]
+                "Infeção Urinária", "Constipacao"]
 
 for i in range(12):
     txt.write("insert into PATOLOGIA values(" +
