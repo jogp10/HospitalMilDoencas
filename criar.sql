@@ -34,7 +34,7 @@ create table PESSOAaCONTACTAR (
 	Nome			TEXT 	NOT NULL,
 	Morada			TEXT 	DEFAULT '',
 	DataDeNascimento	DATE 	NOT NULL,
-	Genero 		TEXT NOT NULL,
+	Genero 		TEXT 	NOT NULL,
 	
 	CONSTRAINT genero CHECK (Genero = 'M' or Genero = 'F' or Genero = 'O')
 
