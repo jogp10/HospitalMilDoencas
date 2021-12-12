@@ -18,8 +18,6 @@ def newdata(type):
     anovalref = 2022
     anosref = 1945
 
-    if(type>7): horaref = type+1
-
     fulldatas = set()
 
     while diaref <= 28:
@@ -295,11 +293,10 @@ for i in range(62):
             ", " + str(randint(1, 39)) + ");\n")
 txt.write("\n")
 
-fulldatas = set(fulldatas)
 fulldatas = sorted(fulldatas)
 for i in fulldatas:
     print(i)
-    txt.write("insert into DATAdeNASCIMENTO values(" +
+    txt.write("insert or replace into DATAdeNASCIMENTO values(" +
         i + ", " + str(now.year-int(i[0]+i[1]+i[2]+i[3])) + ");\n")
 txt.write("\n")
 
