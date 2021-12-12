@@ -8,30 +8,19 @@ now = datetime.datetime.now()
 
 def newdata(type):
         #Data
-    minuto = []
-    hora = []
     dia = []
     mes = []
     anosval = []
     anos = []
-    minutoref = 0
-    horaref = 8
     diaref = 1
     mesref = 1
+    
     anovalref = 2022
     anosref = 1945
-    anosconsref = 2022
 
     if(type>7): horaref = type+1
 
     fulldatas = set()
-    while minutoref <= 59:
-        minuto.append(minutoref)
-        minutoref += 1
-
-    while horaref <= 22:
-        hora.append(horaref)
-        horaref += 1
 
     while diaref <= 28:
         dia.append(diaref)
@@ -52,16 +41,10 @@ def newdata(type):
 
     if(type==0): anos1 = str(random.choice(anos))
     if(type==1): anos1 = str(random.choice(anosval))
-    min1 = str(random.choice(minuto))
-    hora1 = str(random.choice(hora))
     mes1 = str(random.choice(mes))
     dia1 = str(random.choice(dia))
-    if(len(hora1)==1): hora1 = '0' + hora1
-    if(len(min1)==1): min1 = '0' + min1
     if(len(mes1)==1): mes1 = '0' + mes1
     if(len(dia1)==1): dia1 = '0' + dia1
-    if(type>7): return hora1 + '-' + min1
-    if(type==2): anos1 = anosconsref
     data =  anos1 + '-' + mes1 + '-' + dia1
     return data
 
@@ -321,18 +304,12 @@ for i in fulldatas:
 txt.write("\n")
 
 
-for patologi in range(1, 7):
+for patologi in range(1, 13):
+    p = patologi
     for especialidad in mediespe.keys():
-        if(int(patologi/2.0+0.5)!=int(especialidad) ): continue
+        if(int(p/2.0+0.5)!=int(especialidad) ): continue
         for medic in mediespe[especialidad]:
             txt.write("insert into TRATA values(" + 
             str(patologi) + ", " + str(medic) + ", null);\n")
 txt.write("\n")
 
-            
-for i in range(62):
-    data = newdata(8)
-    txt.write("insert into AGENDA values(" + str(i+1) + ", " + 
-            data + ", " + newdata(int(data[:2])) + ", " + newdata(2) + ", "
-            + str(i+1) + ");\n"
-    )
