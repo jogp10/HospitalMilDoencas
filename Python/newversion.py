@@ -297,7 +297,7 @@ fulldatas = sorted(fulldatas)
 for i in fulldatas:
     print(i)
     txt.write("insert into DATAdeNASCIMENTO values('" +
-        i + "', " + str(now.year-int(i[0]+i[1]+i[2]+i[3])) + "');\n")
+        i + "', " + str(now.year-int(i[0]+i[1]+i[2]+i[3])) + ");\n")
 txt.write("\n")
 
 
