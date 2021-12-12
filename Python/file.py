@@ -217,7 +217,7 @@ while len(profissoes) != 40:
 
 # EstatutoComidaEspecialidade ------------------------
 
-Estatuto = ["Chefe", "Sub-Chefe", "Cozinheiro", "Ajudante"]
+Estatuto = ["Chefe", "Sub-Chefe", "Interino", "Ajudante"]
 
 Comida = ["Bacalhau com Broa", "Porco Assado", "Torresmos", "Camarão da Costa",
           "Tripas à Moda do Porto", "Fígado de Cebolada"]

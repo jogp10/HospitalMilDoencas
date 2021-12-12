@@ -24,7 +24,7 @@ create table PACIENTE (
 	Genero 		TEXT 	NOT NULL,
 	Profissao  		TEXT 	DEFAULT '',
 	
-	CONSTRAINT genero CHECK (Genero = ('M' or 'F' or 'O'))
+	CONSTRAINT genero CHECK (Genero = 'M' or Genero = 'F' or Genero = 'O')
 		
 );
 
@@ -36,7 +36,7 @@ create table PESSOAaCONTACTAR (
 	DataDeNascimento	DATE 	NOT NULL,
 	Genero 		TEXT NOT NULL,
 	
-	CONSTRAINT genero CHECK(Genero = ('M' or 'F' or 'O'))
+	CONSTRAINT genero CHECK (Genero = 'M' or Genero = 'F' or Genero = 'O')
 
 );
 
@@ -49,15 +49,15 @@ create table COLABORADOR (
 	Genero 		TEXT 	NOT NULL,
 	Estatuto 		TEXT,
 	Comida 		TEXT,
-	Especialidade 		TEXT 			CONSTRAINT fk_colaborador_especialidade REFERENCES ESPECIALIDADE (Nome) 
+	idEspecialidade 	INTEGER 		CONSTRAINT fk_colaborador_idespecialidade REFERENCES ESPECIALIDADE (idEspecialidade) 
 												ON DELETE CASCADE ON UPDATE CASCADE,
 													
 	CONSTRAINT tipoColaborador_colaborador CHECK(
-		(Estatuto = NOT NULL and Comida = NULL and Especialidade = NULL) or
-		(Estatuto = NULL and Comida = NOT NULL and Especialidade = NULL) or
-		(Estatuto = NULL and Comida = NULL and Especialidade = NOT NULL)),
+		(Estatuto = NOT NULL and Comida = NULL and idEspecialidade = NULL) or
+		(Estatuto = NULL and Comida = NOT NULL and idEspecialidade = NULL) or
+		(Estatuto = NULL and Comida = NULL and idEspecialidade = NOT NULL)),
 		
-	CONSTRAINT genero CHECK(Genero = ('M' or 'F' or 'O'))
+	CONSTRAINT genero CHECK (Genero = 'M' or Genero = 'F' or Genero = 'O')
 
 );
 
@@ -107,11 +107,16 @@ create table PacienteSegurosPatologia (
 );
 
 create table TRATA (
-	idPatologia 		INTEGER PRIMARY KEY	CONSTRAINT fk_trata_idpaciente REFERENCES PACIENTE (idPaciente) 
+	idPatologia 		INTEGER 		CONSTRAINT fk_trata_idpaciente REFERENCES PACIENTE (idPaciente) 
 												ON DELETE CASCADE ON UPDATE CASCADE,
-	idMedico 		INTEGER NOT NULL	CONSTRAINT fk_trata_idmedico REFERENCES COLABORADOR (idColaborador) 
+	idMedico 		INTEGER 		CONSTRAINT fk_trata_idmedico REFERENCES COLABORADOR (idColaborador) 
 												ON DELETE CASCADE ON UPDATE CASCADE,
-	Tratamento 		TEXT DEFAULT ''
+	Tratamento 		TEXT DEFAULT '',
+	
+	PRIMARY KEY (
+        	idMedico,
+        	idPatologia
+        	)
 );
 
 create table AGENDA (
