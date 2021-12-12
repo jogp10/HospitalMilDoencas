@@ -672,12 +672,12 @@ insert into AGENDA values(9, '21:00', '22:00', '2022-08-03', 'Piso 2', 10, null)
 insert into AGENDA values(10, '19:45', '20:00', '2022-09-01', 'Sala 1', 30, null);
 insert into AGENDA values(11, '19:00', '20:00', '2022-09-02', 'Sala 2', 1, null);
 insert into AGENDA values(12, '14:00', '15:00', '2022-02-03', 'Setor 3', null, 99);
-insert into AGENDA values(13, '8:00', '14:00', '2022-03-03', 'Piso 0', 4, null);
+insert into AGENDA values(13, '08:00', '14:00', '2022-03-03', 'Piso 0', 4, null);
 insert into AGENDA values(14, '11:00', '14:00', '2022-02-03', 'Piso 2', 6, null);
 insert into AGENDA values(15, '10:30', '14:00', '2022-06-04', 'Piso 3', 11, null);
 insert into AGENDA values(16, '14:00', '15:15', '2022-10-10', 'Piso 1', 36, null);
 insert into AGENDA values(17, '17:00', '17:35', '2022-02-20', 'Piso 0', 1, null);
-insert into AGENDA values(18, '9:00', '14:00', '2022-02-01', 'Lab 02', 12, null);
+insert into AGENDA values(18, '09:00', '14:00', '2022-02-01', 'Lab 02', 12, null);
 insert into AGENDA values(19, '11:00', '14:00', '2022-03-02', 'Cozinha', null, 131);
 insert into AGENDA values(20, '17:30', '19:00', '2022-04-03', 'Bloco', null, 190);
 insert into AGENDA values(21, '15:00', '16:00', '2022-05-04', 'Setor 2', null, 100);

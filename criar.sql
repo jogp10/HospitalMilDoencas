@@ -24,8 +24,8 @@ create table PACIENTE (
 	Genero 		TEXT 	NOT NULL,
 	Profissao  		TEXT 	DEFAULT '',
 	
-	CONSTRAINT genero CHECK (Genero = 'M' or Genero = 'F' or Genero = 'O')
-		
+	CONSTRAINT genero CHECK (Genero = 'M' or Genero = 'F' or Genero = 'O'),
+	CONSTRAINT datadenascimento_paciente CHECK ( DataDeNascimento < Date('%Y-%m-%d', 'now'))
 );
 
 create table PESSOAaCONTACTAR (
@@ -132,13 +132,19 @@ create table AGENDA (
 												
         CONSTRAINT agendadequem_agenda CHECK(
         	(idPaciente = NULL and idColaborador = NOT NULL) or
-        	(idPaciente = NOT NULL and idColaborador = NULL))								
+        	(idPaciente = NOT NULL and idColaborador = NULL)),	
+        	
+        CONSTRAINT horafinalhorainicial_agenda CHECK(
+        	HoraFinal>HoraInicial)		
+        		
 
 );
 
 create table DATAdeNASCIMENTO (
 	DataDeNascimento 	DATE 	PRIMARY KEY,
-	Idade 			INTEGER NOT NULL
+	Idade 			INTEGER NOT NULL,
+	
+	CONSTRAINT idade_datadenascimento CHECK ( Date('%Y', 'now') - Date('%Y', DataDeNascimento) = Idade)
 	
 );
 
