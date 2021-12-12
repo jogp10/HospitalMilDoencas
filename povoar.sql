@@ -659,3 +659,5 @@ insert into TRATA values(12, 186, null);
 insert into TRATA values(12, 189, null);
 insert into TRATA values(12, 193, null);
 
+insert into AGENDA values(1, '13:11', '14:00', 2022-10-10, 'Piso 0', 1, null);
+

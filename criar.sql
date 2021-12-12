@@ -121,8 +121,8 @@ create table TRATA (
 
 create table AGENDA (
 	idAgenda 		INTEGER PRIMARY KEY,
-	HoraInicial 		TIME 	NOT NULL,
-	HoraFinal 		TIME 	NOT NULL,
+	HoraInicial 		DATE 	NOT NULL,
+	HoraFinal 		DATE 	NOT NULL,
 	Dia 			DATE 	NOT NULL,
 	Local 			TEXT 	NOT NULL,
 	idPaciente 		INTEGER 		CONSTRAINT fk_agenda_idpaciente REFERENCES PACIENTE (idPaciente) 

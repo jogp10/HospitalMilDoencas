@@ -296,8 +296,8 @@ txt.write("\n")
 fulldatas = sorted(fulldatas)
 for i in fulldatas:
     print(i)
-    txt.write("insert or replace into DATAdeNASCIMENTO values(" +
-        i + ", " + str(now.year-int(i[0]+i[1]+i[2]+i[3])) + ");\n")
+    txt.write("insert into DATAdeNASCIMENTO values('" +
+        i + "', " + str(now.year-int(i[0]+i[1]+i[2]+i[3])) + "');\n")
 txt.write("\n")
 
 
