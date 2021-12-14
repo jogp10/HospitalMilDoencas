@@ -6,6 +6,13 @@ import random
 import datetime
 now = datetime.datetime.now()
 
+from datetime import date
+
+def calculate_age(born):
+ 
+    today = date.today()
+    return today.year - born.year - ((today.month, today.day) < (born.month, born.day)) 
+
 def newdata(type):
         #Data
     dia = []
@@ -37,14 +44,19 @@ def newdata(type):
         anosref += 1
 
 
-    if(type==0): anos1 = str(random.choice(anos))
-    if(type==1): anos1 = str(random.choice(anosval))
-    mes1 = str(random.choice(mes))
-    dia1 = str(random.choice(dia))
+    if(type==0): anos1 = random.choice(anos)
+    if(type==1): anos1 = random.choice(anosval)
+    mes1 = random.choice(mes)
+    dia1 = random.choice(dia)
+    x = datetime.datetime(anos1, mes1, dia1)
+    anos1 = str(anos1)
+    mes1 = str(mes1)
+    dia1 = str(dia1)
     if(len(mes1)==1): mes1 = '0' + mes1
     if(len(dia1)==1): dia1 = '0' + dia1
     data =  anos1 + '-' + mes1 + '-' + dia1
-    return data
+    if(type==1): return data
+    return x
 
 
 
@@ -86,7 +98,7 @@ for i in range(39):
     data =  newdata(1)
     txt.write("insert into SEGUROSdeSAUDE values(" +
             str(i+1) + ", '" + SegurosDeSaude[random.randint(0, 3)] + "', " +
-            data + ");\n")
+            str(data)[:10] + ");\n")
 txt.write("\n")
 
 #PESSOA
@@ -211,7 +223,7 @@ for i in range(62):
         telefones[i] + ", '" + 
         random.choice(first_names) + random.choice(last_names) + "', '" +
         random.choice(moradas) + "', " +
-        data + ", '" +
+        str(data)[:10] + ", '" +
         random.choice(['M', 'F', 'O']) + "', '" +
         profissoes[i] +"');\n")
 
@@ -225,7 +237,7 @@ for i in range(16):
         telefones2[i] + ", '" + 
         random.choice(first_names) + random.choice(last_names) + "', '" +
         random.choice(moradas2) + "', " +
-        data + ", '" +
+        str(data)[:10] + ", '" +
         random.choice(['M', 'F', 'O']) + "');\n")
 txt.write("\n")
 
@@ -237,7 +249,7 @@ for i in range(39):
         telefones3[i] + ", '" + 
         random.choice(first_names) + random.choice(last_names) + "', '" +
         random.choice(moradas3) + "', " +
-        data + ", '" +
+        str(data)[:10] + ", '" +
         random.choice(['M', 'F', 'O']) + "', '" +
         random.choice(Estatuto) + "', null, null"
         ");\n")
@@ -251,7 +263,7 @@ for i in range(39):
         telefones3[i+40] + ", '" + 
         random.choice(first_names) + random.choice(last_names) + "', '" +
         random.choice(moradas3) + "', " +
-        data + ", '" +
+        str(data)[:10] + ", '" +
         random.choice(['M', 'F', 'O']) + "', null, '" + 
         random.choice(Comida) + "', null" +
         ");\n")
@@ -272,7 +284,7 @@ for i in range(39):
         telefones3[i+40*2] + ", '" + 
         random.choice(first_names) + random.choice(last_names) + "', '" +
         random.choice(moradas3) + "', " +
-        data + ", '" +
+        str(data)[:10] + ", '" +
         random.choice(['M', 'F', 'O']) + "', null, null, " + especia +
          ");\n")
 txt.write("\n")
@@ -297,7 +309,7 @@ fulldatas = sorted(fulldatas)
 for i in fulldatas:
     print(i)
     txt.write("insert into DATAdeNASCIMENTO values('" +
-        i + "', " + str(now.year-int(i[0]+i[1]+i[2]+i[3])) + ");\n")
+        str(i) + "', " + str(calculate_age(i)) + ");\n")
 txt.write("\n")
 
 
