@@ -191,12 +191,13 @@ while len(moradas3) != 150:
     mor = random.choice(local) + "de " + random.choice(cidade)
     moradas3.append(mor)
 
-# EstatutoComidaEspecialidade ------------------------
+# EstatutoNivelExperienciaEspecialidade ------------------------
 
 Estatuto = ["Chefe", "Sub-Chefe", "Interino", "Ajudante"]
 
-Comida = ["Bacalhau com Broa", "Porco Assado", "Torresmos", "Camarão da Costa",
-          "Tripas à Moda do Porto", "Fígado de Cebolada"]
+NivelExperiencia = ["Chef", "Aspirante", "Ajudante Cozinha", "Empregado de mesa",
+          "Limpa Pratos"]
+
 
 
 # Profissao ---------------------------------------
@@ -265,7 +266,7 @@ for i in range(39):
         random.choice(moradas3) + "', " +
         str(data)[:10] + ", '" +
         random.choice(['M', 'F', 'O']) + "', null, '" + 
-        random.choice(Comida) + "', null" +
+        random.choice(NivelExperiencia) + "', null" +
         ");\n")
 txt.write("\n")
 

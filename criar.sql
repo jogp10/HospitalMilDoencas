@@ -48,14 +48,14 @@ create table COLABORADOR (
 	DataDeNascimento 	DATE 	NOT NULL,
 	Genero 		TEXT 	NOT NULL,
 	Estatuto 		TEXT,
-	Comida 		TEXT,
+	NivelExperiencia 	TEXT,
 	idEspecialidade 	INTEGER 		CONSTRAINT fk_colaborador_idespecialidade REFERENCES ESPECIALIDADE (idEspecialidade) 
 												ON DELETE CASCADE ON UPDATE CASCADE,
 													
 	CONSTRAINT tipoColaborador_colaborador CHECK(
-		(Estatuto = NOT NULL and Comida = NULL and idEspecialidade = NULL) or
-		(Estatuto = NULL and Comida = NOT NULL and idEspecialidade = NULL) or
-		(Estatuto = NULL and Comida = NULL and idEspecialidade = NOT NULL)),
+		(Estatuto = NOT NULL and NivelExperiencia = NULL and idEspecialidade = NULL) or
+		(Estatuto = NULL and NivelExperiencia = NOT NULL and idEspecialidade = NULL) or
+		(Estatuto = NULL and NivelExperiencia = NULL and idEspecialidade = NOT NULL)),
 		
 	CONSTRAINT genero CHECK (Genero = 'M' or Genero = 'F' or Genero = 'O')
 
