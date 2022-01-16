@@ -322,4 +322,3 @@ for patologi in range(1, 13):
             txt.write("insert into TRATA values(" + 
             str(patologi) + ", " + str(medic) + ", null);\n")
 txt.write("\n")
-
