@@ -3,15 +3,12 @@
 .nullvalue NULL
 PRAGMA foreign_keys = ON;
 
--- Gatilho que impede de criar um Seguro de Saúde com 
--- uma Validade anterior à data atual
+-- Gatilho que impede de alterar um Seguro de Saúde para uma Validade inválida
 
-CREATE TRIGGER SeguroInvalido
+
+CREATE TRIGGER IF NOT EXISTS SeguroInvalido
 BEFORE INSERT ON SEGUROdeSAUDE
-FOR EACH ROW
+WHEN (strftime('%Y', 'now') - strftime('%Y', NEW.Validade) < 0)
 BEGIN
-	Select CASE
-		WHEN New.Validade < CAST(CURRENT_TIMESTAMP AS DATE)
-	THEN RAISE(ABORT, 'Validade inválida')
-END;
+    SELECT RAISE(ROLLBACK, 'Seguro invalido!');
 END;
