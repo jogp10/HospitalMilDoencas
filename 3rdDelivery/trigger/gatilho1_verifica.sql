@@ -7,24 +7,27 @@ PRAGMA foreign_keys = ON;
 .print 'Seguros De Saude atuais:'
 .print ''
 
+insert into SEGUROdeSAUDE values(700,'Multicare',2025-01-01);
+insert into SEGUROdeSAUDE values(701,'Liberty',2034-01-01);
 
-INSERT INTO SEGUROdeSAUDE (idSeguroDeSaude,Nome,Validade) VALUES (700,'Multicare',2025-01-01);
-INSERT INTO SEGUROdeSAUDE (idSeguroDeSaude,Nome,Validade) VALUES (701,'Liberty','2034-01-01');
-SELECT Nome,Validade FROM SEGUROdeSAUDE
+SELECT Nome,Validade FROM SEGUROdeSAUDE;
 .print ''
-.print 'Tentar adicionar um Seguro de Saude inválido para disparar o gatilho;'
+.print 'Tentar alterar a validade do Seguro de Saude da Multicare para disparar o gatilho;'
 .print ''
-.print 'Validade = 2010-01-01 (Inválido) :'
+.print 'Validade = 2010 (Inválido) :'
 .print ''
 
-INSERT INTO SEGUROdeSAUDE (idSeguroDeSaude,Nome,Validade) VALUES (900,'AXA','2010-01-01');
+insert into SEGUROdeSAUDE values(702,'AXA',2010-01-01);
 
+.print ''
 .print ''
 Select Nome,Validade FROM SEGUROdeSAUDE;
 
 .print ''
-.print 'Validade = 2040-02-20 (Válido) :'
+.print 'Alterando para uma válida'
+.print 'Validade = 2040 (Válido) :'
 .print ''
-INSERT INTO SEGUROdeSAUDE (idSeguroDeSaude,Nome,Validade) VALUES (699,'AXA','2034-01-01');
 
+
+insert into SEGUROdeSAUDE values(703,'D',2040-01-01);
 Select Nome,Validade FROM SEGUROdeSAUDE;
