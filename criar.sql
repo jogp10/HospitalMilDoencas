@@ -8,8 +8,8 @@ drop table if exists COLABORADOR;
 drop table if exists GRAUdePARENTESCO;
 drop table if exists ESPECIALIDADE;
 drop table if exists PATOLOGIA;
-drop table if exists SEGUROSdeSAUDE;
-drop table if exists PacienteSegurosPatologia;
+drop table if exists SEGUROdeSAUDE;
+drop table if exists PacienteSeguroPatologia;
 drop table if exists TRATA;
 drop table if exists AGENDA;
 drop table if exists DATAdeNASCIMENTO;
@@ -82,25 +82,25 @@ create table PATOLOGIA (
 
 );
 
-create table SEGUROSdeSAUDE (
-	idSegurosDeSaude 	INTEGER PRIMARY KEY,
+create table SEGUROdeSAUDE (
+	idSeguroDeSaude 	INTEGER PRIMARY KEY,
 	Nome 			TEXT 	NOT NULL,
 	Validade 		DATE 	NOT NULL
 
 );
 
-create table PacienteSegurosPatologia (
-	idPaciente 		INTEGER		CONSTRAINT fk_pacientesegurospatologia_idpaciente REFERENCES PACIENTE (idPaciente) 
+create table PacienteSeguroPatologia (
+	idPaciente 		INTEGER		CONSTRAINT fk_pacienteseguropatologia_idpaciente REFERENCES PACIENTE (idPaciente) 
 												ON DELETE CASCADE ON UPDATE CASCADE,
-	idPatologia 		INTEGER		CONSTRAINT fk_pacientesegurospatologia_idpatologia REFERENCES PATOLOGIA (idPatologia) 
+	idPatologia 		INTEGER		CONSTRAINT fk_pacienteseguropatologia_idpatologia REFERENCES PATOLOGIA (idPatologia) 
 												ON DELETE CASCADE ON UPDATE CASCADE,
-	idSegurosDeSaude 	INTEGER		CONSTRAINT fk_pacientesegurospatologia_idsegurosdesaude REFERENCES SEGUROSdeSAUDE (idSegurosDeSaude) 
+	idSeguroDeSaude 	INTEGER		CONSTRAINT fk_pacienteseguropatologia_idsegurodesaude REFERENCES SEGUROdeSAUDE (idSeguroDeSaude) 
 												ON DELETE CASCADE ON UPDATE CASCADE,
 											    	
 	PRIMARY KEY (
         	idPaciente,
         	idPatologia,
-        	idSegurosDeSaude
+        	idSeguroDeSaude
         	)
 
 
