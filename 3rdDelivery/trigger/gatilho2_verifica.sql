@@ -33,5 +33,25 @@ from GRAUdePARENTESCO;
 .print 'Ao apagar um paciente, apagamos o respetivo contacto de emergencia se este nao for de mais nenhum paciente; '
 .print ''
 
+delete from PACIENTE where Paciente.idPaciente = 1; 
+delete from PACIENTE where Paciente.idPaciente = 2; 
+
+.print ''
+
+select * 
+from PACIENTE; 
+
+.print ''
+
+select * 
+from PESSOAaCONTACTAR; 
+
+.print ''
+
+select *
+from GRAUdePARENTESCO; 
+
+.print ''
+
 
 
