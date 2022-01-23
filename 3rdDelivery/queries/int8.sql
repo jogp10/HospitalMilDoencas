@@ -2,9 +2,13 @@
 .headers on
 .nullvalue NULL
 
-# Carga horaria de cada medico
+# Carga horaria planeada de cada medico para o próximo ano
 
-Select Colaborador.nome, Especialidade.Nome, Agenda.HoraInicial, Agenda.HoraFinal, max(Agenda.HoraFinal- Agenda.HoraInicial) as CargaHoraria
-From Colaborador, Especialidade, Agenda
-Where Colaborador.idEspecialidade = Especialidade.idEspecialidade and Agenda.idColaborador = Colaborador.idColaborador;
+Select Colaborador.nome, Especialidade.Nome, sum(Agenda.HoraFinal- Agenda.HoraInicial) as CargaHoraria
+From Colaborador JOIN Especialidade, Agenda
+Where Colaborador.idEspecialidade = Especialidade.idEspecialidade and Agenda.idColaborador = Colaborador.idColaborador
+and Agenda.Dia>strftime('%Y-%m-%d', 'now') and Agenda.Dia<strftime('%Y-%m-%d', 'now', '+1 year')
+group by colaborador.idColaborador
+order by cargahoraria desc, colaborador.nome asc;
+
 
