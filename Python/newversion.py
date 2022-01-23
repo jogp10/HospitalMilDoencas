@@ -58,7 +58,30 @@ def newdata(type):
     if(type==1): return data
     return x
 
+def newhour(type):
+    #Horas
+    hora = []
+    horapac = []
+    minuto = []
 
+    horaref = 0
+    while horaref < 24:
+        hora.append(horaref)
+        if(8<horaref<22):
+            horapac.append(horaref)
+    
+    minuto.append(15, 30, 45, 00)
+
+    if(type==0): hora1 = random.choice(hora)
+    if(type==1): hora1 = random.choice(horapac)
+    minuto1 = random.choice(minuto)
+
+    hora1 = str(hora1)
+    minuto1 = str(minuto1)
+    if(len(hora1)==1): hora1 = '0' + hora1
+    if(len(minuto1)==1): minuto1 = '0' + minuto1
+    hora = hora1 + ":" + minuto1
+    return hora 
 
 
 txt = open("povoar.sql", "w")
@@ -321,4 +344,17 @@ for patologi in range(1, 13):
         for medic in mediespe[especialidad]:
             txt.write("insert into TRATA values(" + 
             str(patologi) + ", " + str(medic) + ", null);\n")
+txt.write("\n")
+
+local = ["piso 0", "piso 1", "piso 2", "piso 3", "lab 02", "cozinha", "sala 1", "sala 2", "Bloco A", "Bloco B", "Setor 1", "Setor 2"]
+
+
+for i in range(1, 100):
+    txt.write("insert into AGENDA values(" + str(i) + ", " + newhour(1) + ", " + 
+                newhour(1) + ", '" + str(newdata(0))[:10] + "', " + random.choice(local) + ", " + str(randint(79, 195)) + ", null);\n" )
+
+for i in range(101, 200):
+    txt.write("insert into AGENDA values(" + str(i) + ", " + newhour(1) + ", " +
+                newhour(1) + ", " + newdata(1) + ", " + random.choice(local) + ", null, " + str(randint(1, 62)) + ");\n" )
+
 txt.write("\n")
