@@ -6,7 +6,7 @@ PRAGMA foreign_keys = ON;
 -- Gatilho que impede de alterar um Seguro de Saúde para uma Validade inválida
 CREATE TRIGGER IF NOT EXISTS SeguroInvalido
 BEFORE INSERT ON SEGUROdeSAUDE
-WHEN (strftime('%Y', 'now') - strftime('%Y', NEW.Validade) < 0)
+WHEN strftime('%Y-%m-%d', 'now') > NEW.Validade
 BEGIN
     SELECT RAISE(ROLLBACK, 'Seguro invalido!');
 END;

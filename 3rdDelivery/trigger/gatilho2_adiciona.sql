@@ -3,6 +3,8 @@
 .nullvalue NULL
 PRAGMA foreign_keys = ON;
 
+# 
+
 create trigger if not exists apagaPaciente
 after delete on PACIENTE
 for each row 

@@ -17,7 +17,7 @@ WHEN exists(
 )
 
 Begin
-	Select raise(ignore);
+	Select raise(ABORT, ignore);
 End;
 
 
@@ -34,5 +34,5 @@ WHEN exists(
 )
 
 Begin
-	Select raise(ignore);
+	Select raise(ROLLBACK, ignore);
 End;
