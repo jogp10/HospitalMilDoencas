@@ -2,7 +2,11 @@
 .headers on
 .nullvalue NULL
 
-# Seguros de saude e patologias que este nao cobre 
+
+select distinct SEGUROdeSAUDE.Nome as SeguroDeSaude, PATOLOGIA.Nome as NaoCobre
+from SegurodeSaude,Patologia
+
+EXCEPT
 
 select distinct SEGUROdeSAUDE.Nome, PATOLOGIA.Nome
 from SEGUROdeSAUDE inner join PATOLOGIA, PacienteSeguroPatologia
