@@ -607,7 +607,7 @@ insert into TRATA values(5, 157, 'Brufen');
 insert into TRATA values(5, 159, 'Brufen');
 insert into TRATA values(5, 167, 'Brufen');
 insert into TRATA values(5, 174, 'Brufen');
-insert into TRATA values(5, 175, 'Brufen');
+insert into TRATA values(5, 175, 'Ficar de Cama');
 insert into TRATA values(5, 177, 'Brufen');
 insert into TRATA values(5, 180, 'Brufen');
 insert into TRATA values(5, 186, 'Brufen');
