@@ -58,7 +58,51 @@ def newdata(type):
     if(type==1): return data
     return x
 
+def newhour(type):
+    resu = []
 
+    #Horas
+    hora = []
+    horapac = []
+    minuto = []
+
+    horaref = 0
+    while horaref < 24:
+        hora.append(horaref)
+        horaref += 1
+        if(8<horaref<22):
+            horapac.append(horaref)
+    
+    minuto.append(15)
+    minuto.append(30)
+    minuto.append(45)
+    minuto.append(00)
+
+
+    if(type==0): hora1 = random.choice(hora[ : -1])
+    if(type==1): hora1 = random.choice(horapac[ : -1])
+    minuto1 = random.choice(minuto)
+
+    hora1 = str(hora1)
+    minuto1 = str(minuto1)
+    if(len(hora1)==1): hora1 = '0' + hora1
+    if(len(minuto1)==1): minuto1 = '0' + minuto1
+    hora0 = hora1 + ":" + minuto1
+    resu.append(hora0)
+
+    if(type==0): hora1 = random.choice(hora[ int(resu[0][:2])+1 :])
+    if(type==1): hora1 = random.choice(horapac[ int(resu[0][:2])-8 : ] )
+    minuto1 = random.choice(minuto)
+
+    hora1 = str(hora1)
+    minuto1 = str(minuto1)
+    if(len(hora1)==1): hora1 = '0' + hora1
+    if(len(minuto1)==1): minuto1 = '0' + minuto1
+    hora0 = hora1 + ":" + minuto1
+    resu.append(hora0)
+
+
+    return resu
 
 
 txt = open("povoar.sql", "w")
@@ -270,7 +314,6 @@ for i in range(39):
         ");\n")
 txt.write("\n")
 
-
 mediespe = {}
 
 for i in range(39):
@@ -290,14 +333,11 @@ for i in range(39):
          ");\n")
 txt.write("\n")
 
-
 #GrauDeParentesco
-
 for i in range(62):
     txt.write("insert into GRAUdePARENTESCO values(" +
                str(i+1) + ", " + str(randint(63, 78)) + ");\n")
 txt.write("\n")
-
 
 #PacienteSegurosPatologia
 for i in range(62):
@@ -313,7 +353,6 @@ for i in fulldatas:
         str(i) + "', " + str(calculate_age(i)) + ");\n")
 txt.write("\n")
 
-
 for patologi in range(1, 13):
     p = patologi
     for especialidad in mediespe.keys():
@@ -321,4 +360,27 @@ for patologi in range(1, 13):
         for medic in mediespe[especialidad]:
             txt.write("insert into TRATA values(" + 
             str(patologi) + ", " + str(medic) + ", null);\n")
+txt.write("\n")
+
+local = ["Piso 0", "Piso 1", "Piso 2", "Piso 3", "Lab 02", "Cozinha", "Sala 1", "Sala 2", "Bloco A", "Bloco B", "Setor 1", "Setor 2"]
+
+for i in range(1, 50):
+    hour = newhour(1)
+    txt.write("insert into AGENDA values(" + str(i) + ", '" + str(hour[0]) + "', '" + 
+                str(hour[1]) + "', '" + str(newdata(0))[:10] + "', '" + random.choice(local) + "', " + str(randint(1, 62)) + ", null);\n" )
+for i in range(51, 100):
+    hour = newhour(1)
+    txt.write("insert into AGENDA values(" + str(i) + ", '" + str(hour[0]) + "', '" + 
+                str(hour[1]) + "', '" + str(newdata(1))[:10] + "', '" + random.choice(local) + "', " + str(randint(1, 62)) + ", null);\n" )
+for i in range(101, 150):
+    hour = newhour(0)
+    txt.write("insert into AGENDA values(" + str(i) + ", '" + str(hour[0]) + "', '" + 
+                str(hour[1]) + "', '" + str(newdata(0))[:10] + "', '" + random.choice(local) + "', null, " + str(randint(79, 195)) + ");\n" )
+for i in range(151, 200):
+    hour = newhour(0)
+    txt.write("insert into AGENDA values(" + str(i) + ", '" + str(hour[0]) + "', '" + 
+                str(hour[1]) + "', '" + str(newdata(1))[:10] + "', '" + random.choice(local) + "', null, " +  str(randint(79, 195)) + ");\n" )
+
+        
+
 txt.write("\n")
