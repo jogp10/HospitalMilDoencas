@@ -140,9 +140,9 @@ SegurosDeSaude = ["Liberty", "Servicos Sociais", "AXA", "Multicare"]
 
 for i in range(39):
     data =  newdata(1)
-    txt.write("insert into SEGUROSdeSAUDE values(" +
-            str(i+1) + ", '" + SegurosDeSaude[random.randint(0, 3)] + "', " +
-            str(data)[:10] + ");\n")
+    txt.write("insert into SEGUROdeSAUDE values(" +
+            str(i+1) + ", '" + SegurosDeSaude[random.randint(0, 3)] + "', '" +
+            str(data)[:10] + "');\n")
 txt.write("\n")
 
 #PESSOA
@@ -267,8 +267,8 @@ for i in range(62):
         str(i+1) + ", " + 
         telefones[i] + ", '" + 
         random.choice(first_names) + random.choice(last_names) + "', '" +
-        random.choice(moradas) + "', " +
-        str(data)[:10] + ", '" +
+        random.choice(moradas) + "', '" +
+        str(data)[:10] + "', '" +
         random.choice(['M', 'F', 'O']) + "', '" +
         profissoes[i] +"');\n")
 
@@ -281,8 +281,8 @@ for i in range(16):
         str(i+1+39+23) + ", " + 
         telefones2[i] + ", '" + 
         random.choice(first_names) + random.choice(last_names) + "', '" +
-        random.choice(moradas2) + "', " +
-        str(data)[:10] + ", '" +
+        random.choice(moradas2) + "', '" +
+        str(data)[:10] + "', '" +
         random.choice(['M', 'F', 'O']) + "');\n")
 txt.write("\n")
 
@@ -293,8 +293,8 @@ for i in range(39):
         str(i+1+39*2) + ", " + 
         telefones3[i] + ", '" + 
         random.choice(first_names) + random.choice(last_names) + "', '" +
-        random.choice(moradas3) + "', " +
-        str(data)[:10] + ", '" +
+        random.choice(moradas3) + "', '" +
+        str(data)[:10] + "', '" +
         random.choice(['M', 'F', 'O']) + "', '" +
         random.choice(Estatuto) + "', null, null"
         ");\n")
@@ -307,8 +307,8 @@ for i in range(39):
         str(i+1+39*3) + ", " + 
         telefones3[i+40] + ", '" + 
         random.choice(first_names) + random.choice(last_names) + "', '" +
-        random.choice(moradas3) + "', " +
-        str(data)[:10] + ", '" +
+        random.choice(moradas3) + "', '" +
+        str(data)[:10] + "', '" +
         random.choice(['M', 'F', 'O']) + "', null, '" + 
         random.choice(NivelExperiencia) + "', null" +
         ");\n")
@@ -327,8 +327,8 @@ for i in range(39):
         str(i+1+39*4) + ", " + 
         telefones3[i+40*2] + ", '" + 
         random.choice(first_names) + random.choice(last_names) + "', '" +
-        random.choice(moradas3) + "', " +
-        str(data)[:10] + ", '" +
+        random.choice(moradas3) + "', '" +
+        str(data)[:10] + "', '" +
         random.choice(['M', 'F', 'O']) + "', null, null, " + especia +
          ");\n")
 txt.write("\n")
@@ -341,7 +341,7 @@ txt.write("\n")
 
 #PacienteSegurosPatologia
 for i in range(62):
-    txt.write("insert into PacienteSegurosPatologia values(" + 
+    txt.write("insert into PacienteSeguroPatologia values(" + 
             str(i+1) + ", " + str(randint(1, 12)) + 
             ", " + str(randint(1, 39)) + ");\n")
 txt.write("\n")
@@ -350,7 +350,7 @@ fulldatas = sorted(fulldatas)
 for i in fulldatas:
     print(i)
     txt.write("insert into DATAdeNASCIMENTO values('" +
-        str(i) + "', " + str(calculate_age(i)) + ");\n")
+        str(i)[:10] + "', " + str(calculate_age(i)) + ");\n")
 txt.write("\n")
 
 for patologi in range(1, 13):

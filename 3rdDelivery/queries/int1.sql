@@ -5,7 +5,7 @@
 # Nr de ocorrencias de cada patologia
 
 SELECT nome, count(*) as nr_ocorrencias
-FROM Patologia, PacienteSegurosPatologia
-where Patologia.idPatologia=PacienteSegurosPatologia.idPatologia
-group by PacienteSegurosPatologia.idPatologia
+FROM Patologia, PacienteSeguroPatologia
+where Patologia.idPatologia=PacienteSeguroPatologia.idPatologia
+group by PacienteSeguroPatologia.idPatologia
 ORDER BY nr_ocorrencias DESC
