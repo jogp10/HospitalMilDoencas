@@ -17,9 +17,8 @@ WHEN exists(
 )
 
 Begin
-	Select raise(ignore);
+	Select raise(ABORT, 'Data invalida');
 End;
-
 
 -- Ao atualizar uma agenda, verifica se não existe overlap
 Create Trigger IF NOT EXISTS updateAgenda
@@ -34,5 +33,6 @@ WHEN exists(
 )
 
 Begin
-	Select raise(ignore);
+	Select raise(ROLLBACK, 'Data Invalida');
 End;
+
