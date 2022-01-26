@@ -11,6 +11,7 @@ BEGIN
     SELECT RAISE(ROLLBACK, 'Seguro invalido!');
 END;
 
+-- Gatilho que impede de atualizar um Seguro de Saúde para uma Validade inválida
 CREATE TRIGGER IF NOT EXISTS SeguroInvalidoUpdate
 BEFORE UPDATE OF Validade ON SEGUROdeSAUDE
 FOR EACH ROW
